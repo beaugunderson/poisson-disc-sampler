@@ -1,0 +1,27 @@
+{
+  "name": "poisson-disc-sampler",
+  "version": "1.0.0",
+  "description": "A simple Poisson disc sampler",
+  "main": "poisson-disc-sampler.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beaugunderson/node-poisson-disc-sampler.git"
+  },
+  "keywords": [
+    "poisson",
+    "sampling"
+  ],
+  "author": "Beau Gunderson <beau@beaugunderson.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/beaugunderson/node-poisson-disc-sampler/issues"
+  },
+  "homepage": "https://github.com/beaugunderson/node-poisson-disc-sampler",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1"
+  }
+}
