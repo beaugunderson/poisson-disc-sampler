@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function poissonDiscSampler(width, height, radius) {
+module.exports = function poissonDiscSampler(width, height, radius, rng) {
   var k = 30; // maximum number of samples before rejection
   var radius2 = radius * radius;
   var R = 3 * radius2;
@@ -15,6 +15,8 @@ module.exports = function poissonDiscSampler(width, height, radius) {
   var queueSize = 0;
 
   var sampleSize = 0;
+  
+  rng = rng || Math.random;
 
   function far(x, y) {
     var i = x / cellSize | 0;
@@ -60,19 +62,19 @@ module.exports = function poissonDiscSampler(width, height, radius) {
 
   return function () {
     if (!sampleSize) {
-      return sample(Math.random() * width, Math.random() * height);
+      return sample(rng() * width, rng() * height);
     }
 
     // Pick a random existing sample and remove it from the queue.
     while (queueSize) {
-      var i = Math.random() * queueSize | 0;
+      var i = rng() * queueSize | 0;
       var s = queue[i];
 
       // Make a new candidate between [radius, 2 * radius] from the existing
       // sample.
       for (var j = 0; j < k; ++j) {
-        var a = 2 * Math.PI * Math.random();
-        var r = Math.sqrt(Math.random() * R + radius2);
+        var a = 2 * Math.PI * rng();
+        var r = Math.sqrt(rng() * R + radius2);
         var x = s[0] + r * Math.cos(a);
         var y = s[1] + r * Math.sin(a);
 
