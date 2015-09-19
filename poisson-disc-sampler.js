@@ -15,7 +15,7 @@ module.exports = function poissonDiscSampler(width, height, radius, rng) {
   var queueSize = 0;
 
   var sampleSize = 0;
-  
+
   rng = rng || Math.random;
 
   function far(x, y) {
